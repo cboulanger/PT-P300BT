@@ -1,1 +1,0 @@
-uv run python printlabel.py "bt:PT-P300" "/System/Library/Fonts/Supplemental/Arial.ttf" "Hello World"
