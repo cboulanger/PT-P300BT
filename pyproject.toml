@@ -16,6 +16,7 @@ dependencies = [
 
 [project.scripts]
 print = "printcmd:main"
+gui = "printcmd:gui"
 
 [build-system]
 requires = ["setuptools>=68"]

@@ -30,6 +30,9 @@ day-to-day use.
 The wrapper is deliberately separate from `printlabel.py`, which is not
 modified. That keeps it easy to merge upstream changes.
 
+A second shortcut, `uv run gui`, opens the graphical interface (see
+[The GUI](#the-gui)).
+
 ## Requirements
 
 - [uv](https://docs.astral.sh/uv/)
@@ -148,6 +151,21 @@ uv run --project /path/to/PT-P300BT print "Hello World"
 Relative paths (such as an image for `-M`) are resolved from the directory
 you run the command in.
 
+## The GUI
+
+```bash
+uv run gui
+```
+
+This is a shortcut for `uv run python printlabel.py --gui`: it opens the
+Tkinter interface with a live preview, a font browser and all options as
+controls. It takes no arguments. Like `print`, it reports a startup failure as
+a single `error: ...` line.
+
+The GUI needs Tk. It is included with most Python installs, but Homebrew's
+Python ships it separately; if you see `No module named '_tkinter'`, run
+`brew install python-tk@3.12` (matching your Python version).
+
 ## Behaviour
 
 **Silent on success.** Progress messages, the printer status dumps and the
@@ -209,6 +227,8 @@ The wrapper's own options must be spelled out in full; abbreviations such as
 - **`print: command not found`, or nothing is printed.** Run it as
   `uv run print`. In zsh, a bare `print` is a shell built-in and takes
   precedence over the script, even when the virtual environment is activated.
+- **`uv run gui` says `No module named '_tkinter'`.** Your Python was built
+  without Tk; see [The GUI](#the-gui).
 - **`Printer reported an error: Low battery`** (or another printer error). The
   message comes from the printer. Fix the cause and run again, or add
   `--verbose` to see the full status exchange.

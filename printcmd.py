@@ -118,5 +118,11 @@ def main():
     sys.exit(_run(quiet=not (opts.verbose or informational)))
 
 
+def gui():
+    """Entry point for `uv run gui`: launch the Tkinter GUI."""
+    sys.argv = [sys.argv[0], "--gui"]
+    sys.exit(_run(quiet=False))
+
+
 if __name__ == "__main__":
     main()
